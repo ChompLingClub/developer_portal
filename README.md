@@ -88,30 +88,32 @@ For reference, your HTML file should look something like...
 ```html
 <!doctype html>
 <html>
-    <body>
-    	<amex:init client_id="CLIENT_ID" env="qa" callback="aexpCallback"/>
+	<body>
+		<amex:init client_id="CLIENT_ID" env="qa" callback="aexpCallback"/>
 
-    
-        <form id="payment-form">
-          	<div id="amex-express-checkout"></div>
-        </form>
-      
-        <script src="https://code.jquery.com/jquery-3.2.1.js"
-      			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-      			crossorigin="anonymous"></script>
-    	<script src="https://icm.aexp-static.com/Internet/IMDC/US_en/RegisteredCard/AmexExpressCheckout/js/AmexExpressCheckout.js"></script>
-        <script>
-          function aexpCallback(response) {
-            var token = response.token;
-            if (token) {
-              console.log('Stripe token is: ' + token);
 
-              var stripeToken = '<input type="hidden" name="stripeToken">';
-              $('#payment-form').append($(stripeToken).val(token));
-            }
-          };
-	</script>
-    </body>
+		<form id="payment-form">
+			<div id="amex-express-checkout"></div>
+		</form>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.js"
+				integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+				crossorigin="anonymous"></script>
+		
+		<script src="https://icm.aexp-static.com/Internet/IMDC/US_en/RegisteredCard/AmexExpressCheckout/js/AmexExpressCheckout.js"></script>
+		
+		<script>
+			function aexpCallback(response) {
+				var token = response.token;
+				if (token) {
+					console.log('Stripe token is: ' + token);
+
+					var stripeToken = '<input type="hidden" name="stripeToken">';
+					$('#payment-form').append($(stripeToken).val(token));
+				}
+			};
+		</script>
+	</body>
 </html>
 ```
 
