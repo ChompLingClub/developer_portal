@@ -63,7 +63,7 @@ Otherwise, you can use the following generic CLIENT_ID: `799a098b-b65c-47dc-abb3
   crossorigin="anonymous"></script>
 ```
 
-5. Add Callback logic.
+5. Add callback logic. This will store your stripe token as a hidden field on the input. We'll come back to this part when we submit the form.
 
 ```javascript
 function aexpCallback(response) {
@@ -88,7 +88,7 @@ For reference, your HTML file should look something like...
 ```html
 <!doctype html>
 <html>
-	<body>
+    <body>
     	<amex:init client_id="CLIENT_ID" env="qa" callback="aexpCallback"/>
 
     
